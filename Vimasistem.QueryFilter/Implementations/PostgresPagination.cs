@@ -8,12 +8,12 @@ namespace Vimasistem.QueryFilter.Implementations
         {
             string query = "";
 
-            if (pageSize != null) query = " " + query + $"LIMIT {pageSize}";
+            if (pageSize != null) query = query + " " + $"LIMIT {pageSize}";
             
             if (pageNumber != null)
             {
                 pageNumber = (pageNumber - 1) * (pageSize ?? 1);
-                query =  " " + query + $"OFFSET {pageNumber} ROWS";
+                query =  query + " " + $"OFFSET {pageNumber} ROWS";
             }
 
             return query;
