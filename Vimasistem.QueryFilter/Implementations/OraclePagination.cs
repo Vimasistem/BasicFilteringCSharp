@@ -11,10 +11,10 @@ namespace Vimasistem.QueryFilter.Implementations
             if (pageNumber != null)
             {
                 pageNumber = (pageNumber - 1) * (pageSize ?? 1);
-                query =  " " + query + $"OFFSET {pageNumber} ROWS";
+                query =  query + " " + $"OFFSET {pageNumber} ROWS";
             }
             
-            if (pageSize != null) query = " " + query + $"FETCH NEXT {pageSize} ROWS ONLY";
+            if (pageSize != null) query = query + " " + $"FETCH NEXT {pageSize} ROWS ONLY";
 
             return query;
         }
