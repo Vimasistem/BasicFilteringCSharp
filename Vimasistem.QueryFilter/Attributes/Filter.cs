@@ -3,7 +3,7 @@ using System;
 namespace Vimasistem.QueryFilter.Attributes
 {
     [AttributeUsage(AttributeTargets.All, Inherited = false, AllowMultiple = true)]
-    sealed class Filter : Attribute
+    public sealed class Filter : Attribute
     {
         private readonly string _fieldName;
         private readonly string _group;
