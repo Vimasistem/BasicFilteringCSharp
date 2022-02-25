@@ -20,7 +20,14 @@ namespace Vimasistem.QueryFilter
 
                     if (propertyInfo.GetValue(this) != null)
                     {
-                        conditions = conditions + $" {prefix} " + (attribute.Group != null ? attribute.Group + "." : "") + $"{attribute.FieldName} = :{propertyInfo.Name}";
+                        if(propertyInfo.GetValue(this).GetType() == string || propertyInfo.GetValue(this).GetType() == char)
+                        {
+                            conditions = conditions + $" {prefix} LOWER(" + (attribute.Group != null ? attribute.Group + "." : "") + $"{attribute.FieldName}) LIKE LOWER(:{propertyInfo.Name})";
+                        } else
+                        {
+                            conditions = conditions + $" {prefix} " + (attribute.Group != null ? attribute.Group + "." : "") + $"{attribute.FieldName} = :{propertyInfo.Name}";
+                        }
+
                         prefix = "AND";
                     }
                 }
