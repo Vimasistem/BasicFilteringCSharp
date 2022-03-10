@@ -20,7 +20,7 @@ namespace Vimasistem.QueryFilter
 
                     if (propertyInfo.GetValue(this) != null)
                     {
-                        if(propertyInfo.GetValue(this).GetType() is string || propertyInfo.GetValue(this).GetType() is char)
+                        if(propertyInfo.GetValue(this).GetType() == typeof(string) || propertyInfo.GetValue(this).GetType() == typeof(char))
                         {
                             conditions = conditions + $" {prefix} LOWER(" + (attribute.Group != null ? attribute.Group + "." : "") + $"{attribute.FieldName}) LIKE LOWER(:{propertyInfo.Name})";
                         } else
