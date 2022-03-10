@@ -22,7 +22,7 @@ namespace Vimasistem.QueryFilter
                     {
                         if(propertyInfo.GetValue(this).GetType() == typeof(string) || propertyInfo.GetValue(this).GetType() == typeof(char))
                         {
-                            conditions = conditions + $" {prefix} LOWER(" + (attribute.Group != null ? attribute.Group + "." : "") + $"{attribute.FieldName}) LIKE LOWER(:{propertyInfo.Name})";
+                            conditions = conditions + $" {prefix} LOWER( " + (attribute.Group != null ? attribute.Group + "." : "") + $"{attribute.FieldName}) LIKE LOWER(:{propertyInfo.Name})";
                         } else
                         {
                             conditions = conditions + $" {prefix} " + (attribute.Group != null ? attribute.Group + "." : "") + $"{attribute.FieldName} = :{propertyInfo.Name}";
