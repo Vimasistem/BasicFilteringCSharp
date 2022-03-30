@@ -1,21 +1,20 @@
-﻿using System;
-using Vimasistem.QueryFilter.Attributes;
+﻿using Vimasistem.QueryFilter.Attributes;
 
 namespace Vimasistem.UnitTests.FakeEntities
 {
     public class FakeDto : QueryFilter.QueryFilter
 	{
-		[Filter("ID")]
-		public int Id { get; set; }
+        [Filter("CODIGO_PERSONA", "PERS_PERSONAS")]
+        public int? codigoPersona { get; set; }
 
-		[Filter("NOMBRE")]
-		public string Nombre { get; set; }
+        [Filter("nombre", "pers")]
+        public string nombre { get; set; }
 
-		[Filter("DESCRIPCION")]
-		public string Descripcion { get; set; }
+        [Filter("NUMERO_IDENTIFICACION", "PERS_PERSONAS")]
+        public string nroIdentificacion { get; set; }
 
-		[Filter("FECHA")]
-		public DateTime Fecha { get; set; }
-	}
+        [Filter("APELLIDO")]
+        public string apellido { get; set; }
+    }
 }
 

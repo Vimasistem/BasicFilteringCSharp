@@ -11,13 +11,15 @@ namespace Vimasistem.UnitTests
 		{
 			FakeDto dto = new FakeDto
 			{
-				Id = 1,
-				Nombre = "%NOMBRE%",
-				Descripcion = "DESCRIPCION"
+				codigoPersona = 1,
+				nombre= "%NOMBRE%",
+				nroIdentificacion = "0123456789",
+				apellido = "%APELLIDO%"
 			};
 
-			string query = dto.GetQuery();
-			string expectedQuery = "  ID = :Id AND LOWER(NOMBRE) LIKE LOWER(:Nombre) AND LOWER(DESCRIPCION) LIKE LOWER(:Descripcion) AND FECHA = :Fecha";
+			string query = dto.GetQuery(new []{ "pers:pers", "PERS_PERSONAS:pp" }).Trim();
+
+			string expectedQuery = "pp.CODIGO_PERSONA = :codigoPersona AND UPPER( pers.nombre) LIKE UPPER(:nombre) AND UPPER( pp.NUMERO_IDENTIFICACION) LIKE UPPER(:nroIdentificacion) AND UPPER( APELLIDO) LIKE UPPER(:apellido)";
 
 			Assert.AreEqual(expectedQuery, query);
 		}
